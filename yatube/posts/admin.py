@@ -5,9 +5,9 @@ from .models import Post, Group
 
 
 class PostAdmin(admin.ModelAdmin):
-    list_display = ('pk', 
-                    'text', 
-                    'pub_date', 
+    list_display = ('pk',
+                    'text',
+                    'pub_date',
                     'author',
                     'group')
     list_editable = ('group',)
