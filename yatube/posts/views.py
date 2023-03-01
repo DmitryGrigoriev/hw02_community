@@ -20,7 +20,7 @@ def group_post(request, slug):
     """Функция для отображения сообщения для страницы группы."""
 
     group = get_object_or_404(Group, slug=slug)
-    posts = group.groups.all()[:settings.NUM_REC]
+    posts = group.posts.all()[:settings.NUM_REC]
 
     context = {
         'group': group,
