@@ -1,7 +1,8 @@
-<!-- templates/posts/group_list.html -->
 {% extends 'base.html' %}
+{% block title %}
+Записи группы {{ group.title }}
+{% endblock %}
 {% block content %}
-  <title>Записи группы {{ group.title }}</title>
   <h1>{{ group.title }}</h1>
   <p>{{ group.description }}</p>
   {% for post in posts%}
@@ -14,7 +15,6 @@
       </li>
     </ul>
     <p>{{ post.text }}</p>
-    <a href="">все записи группы</a>
     {% if not forloop.last %}<hr>{% endif %}
   {% endfor %}
 {% endblock %}

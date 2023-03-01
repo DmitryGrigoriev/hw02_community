@@ -1,13 +1,13 @@
-from django.shortcuts import render, get_object_or_404
-from .models import Post, Group
+from django.conf import settings
+from django.shortcuts import get_object_or_404, render
 
-# Create your views here.
+from .models import Group, Post
 
 
 def index(request):
     """Функция для выведения 10 последних записей."""
 
-    posts = Post.objects.order_by('-pub_date')[:10]
+    posts = Post.objects.all()[:settings.NUM_REC]
 
     context = {
         'posts': posts
@@ -20,7 +20,7 @@ def group_post(request, slug):
     """Функция для отображения сообщения для страницы группы."""
 
     group = get_object_or_404(Group, slug=slug)
-    posts = Post.objects.filter(group=group).order_by('-pub_date')[:10]
+    posts = group.groups.all()[:settings.NUM_REC]
 
     context = {
         'group': group,
